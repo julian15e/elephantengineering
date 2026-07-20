@@ -1,0 +1,514 @@
+/*==================================================
+    COLOUR PALETTE
+
+    Central location for all website colours.
+==================================================*/
+
+:root {
+
+    /* Primary Colours */
+
+    --charcoal: #25272B;
+    --graphite: #3F4247;
+    --steel: #6F7378;
+
+    /* Background Colours */
+
+    --light-grey: #F4F5F7;
+    --nav-grey: #E2E3E5;
+
+    /* Brand Colours */
+
+    --orange: #FF5000;
+    --orange-dark: #D94500;
+
+    /* Text Colours */
+
+    --text-dark: #222831;
+    --white: #FFFFFF;
+
+}
+
+
+/*==================================================
+    GLOBAL STYLES
+
+    Removes browser defaults and establishes the
+    site's base typography.
+==================================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--light-grey);
+    color: var(--text-dark);
+}
+
+h1 {
+    color: var(--white);
+    margin-top: 50px;
+    text-align: center;
+}
+
+p {
+    margin-top: 15px;
+    color: #50545A;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/*==================================================
+    HEADER
+
+    Company banner displayed at the top of the page.
+==================================================*/
+
+.banner {
+
+    background: linear-gradient(
+        135deg,
+        var(--charcoal),
+        var(--graphite)
+    );
+
+    border-bottom: 4px solid var(--orange);
+
+    color: var(--white);
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.banner h1 {
+
+    margin: 0;
+
+    color: var(--white);
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+/* Company name link */
+
+.banner h1 a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.banner h1 a:hover {
+    color: var(--orange);
+}
+
+
+/*==================================================
+    NAVIGATION BAR
+
+    Main navigation with animated orange underline.
+==================================================*/
+
+nav {
+
+    background: var(--nav-grey);
+
+    border-bottom: 1px solid #C7C9CC;
+
+}
+
+nav ul {
+
+    display: flex;
+
+    justify-content: center;
+
+    list-style: none;
+
+}
+
+nav li {
+
+    margin: 0 30px;
+
+}
+
+nav a {
+
+    position: relative;
+
+    display: block;
+
+    padding: 18px;
+
+    color: var(--text-dark);
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    transition: color .25s ease;
+
+}
+
+/* Animated orange underline */
+
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+
+    height: 4px;
+
+    background: var(--orange);
+
+    transition: .25s ease;
+
+}
+
+nav a:hover {
+
+    color: var(--orange-dark);
+
+}
+
+nav a:hover::after {
+
+    left: 10%;
+    right: 10%;
+
+}
+
+
+/*==================================================
+    MAIN CONTENT
+
+    Homepage welcome section.
+==================================================*/
+
+main {
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+}
+
+main h2 {
+
+    color: var(--charcoal);
+
+    font-size: 30px;
+
+}
+
+/* Orange divider */
+
+main h2::before {
+
+    content: "";
+
+    display: block;
+
+    width: 80px;
+
+    height: 4px;
+
+    margin: 0 auto 20px;
+
+    background: var(--orange);
+
+}
+
+
+/*==================================================
+    ENGINEERING / DESIGN / MANUFACTURING
+
+    Animated feature banner.
+==================================================*/
+
+.engineering-banner {
+
+    position: relative;
+
+    margin-top: 180px;
+
+    padding: 40px 20px;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(30,30,30,.96),
+            rgba(82,86,92,.95),
+            rgba(30,30,30,.96)
+        ),
+
+        repeating-linear-gradient(
+            135deg,
+            transparent 0,
+            transparent 12px,
+            rgba(255,255,255,.025) 12px,
+            rgba(255,255,255,.025) 14px
+        );
+
+    border-top: 5px solid var(--orange);
+
+    border-bottom: 5px solid var(--orange);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.18);
+
+}
+
+/* Soft spotlight */
+
+.engineering-banner::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+
+            circle at center,
+
+            rgba(255,255,255,.08),
+
+            transparent 65%
+
+        );
+
+}
+
+
+/* Banner text container */
+
+.banner-content {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 20px;
+
+    text-align: center;
+
+}
+
+/* Animated words */
+
+.banner-word {
+
+    color: var(--white);
+
+    font-size: clamp(2.2rem,6vw,4.8rem);
+
+    font-weight: 700;
+
+    letter-spacing: 8px;
+
+    text-shadow:
+
+        0 2px 4px rgba(0,0,0,.4),
+
+        0 0 15px rgba(255,255,255,.08);
+
+    opacity: 0;
+
+}
+
+
+/*==================================================
+    WORD ANIMATIONS
+
+    Words appear one after another, remain visible,
+    then fade out together.
+==================================================*/
+
+.word-one {
+
+    animation: wordOne 20s infinite;
+
+}
+
+.word-two {
+
+    animation: wordTwo 20s infinite;
+
+}
+
+.word-three {
+
+    animation: wordThree 20s infinite;
+
+}
+
+@keyframes wordOne {
+
+    0% {
+
+        opacity: 0;
+        transform: translateY(20px);
+
+    }
+
+    3% {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+    94% {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+    100% {
+
+        opacity: 0;
+        transform: translateY(-10px);
+
+    }
+
+}
+
+@keyframes wordTwo {
+
+    0%,
+    5% {
+
+        opacity: 0;
+        transform: translateY(20px);
+
+    }
+
+    8% {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+    94% {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+    100% {
+
+        opacity: 0;
+        transform: translateY(-10px);
+
+    }
+
+}
+
+@keyframes wordThree {
+
+    0%,
+    10% {
+
+        opacity: 0;
+        transform: translateY(20px);
+
+    }
+
+    13% {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+    94% {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+    100% {
+
+        opacity: 0;
+        transform: translateY(-10px);
+
+    }
+
+}
+
+
+/*==================================================
+    MOBILE LAYOUT
+
+    Responsive adjustments for smaller screens.
+==================================================*/
+
+@media (max-width:700px) {
+
+    .banner h1 {
+
+        font-size:34px;
+
+    }
+
+    nav li {
+
+        margin:0 10px;
+
+    }
+
+    nav a {
+
+        padding:15px 10px;
+
+        font-size:14px;
+
+    }
+
+    .engineering-banner {
+
+        margin-top:120px;
+
+        padding:50px 15px;
+
+    }
+
+    .banner-word {
+
+        letter-spacing:4px;
+
+    }
+
+}
